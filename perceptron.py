@@ -24,9 +24,9 @@ class Perceptron:
 
         for epoch in range(self.epochs):
             errors = 0
-            for xi, target in zip(X, y):
-                delta_weight = self.eta * (target - self.predict(xi))
-                self.weight[1:] += delta_weight * xi
+            for x_i, target in zip(X, y):
+                delta_weight = self.eta * (target - self.predict(x_i))
+                self.weight[1:] += delta_weight * x_i
                 self.weight[0] += delta_weight
                 errors += int(delta_weight != 0.0)
             self.errors_.append(errors)
