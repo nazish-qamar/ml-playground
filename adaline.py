@@ -45,7 +45,11 @@ y = np.where(y == 0, -1, 1)    #setosa(-1) and versicolor(1)
 # taking only the sepal length and petal length
 X = df.iloc[0:100, [0, 2]].values
 
-model = Adaline(eta=0.0005, epochs=20).fit(X, y)
+X_standardized = np.copy(X)
+X_standardized[:, 0] = (X[:, 0] - X[:, 0].mean()) / X[:, 0].std()
+X_standardized[:, 1] = (X[:, 1] - X[:, 1].mean()) / X[:, 1].std()
+
+model = Adaline(eta=0.01, epochs=20).fit(X_standardized, y)
 plt.plot(range(1, len(model.cost) + 1), model.cost, marker='o')
 plt.xlabel('Epochs')
 plt.ylabel('Sum-squared-error')
