@@ -37,7 +37,7 @@ class LogisticRegressionWithGD:
 
 
 #Loading Iris data
-X_train, X_test, y_train, y_test = LoadData.load_data()
+X_train, X_test, y_train, y_test = LoadData().load_data()
 X_train_01_subset = X_train[(y_train == 0) | (y_train == 1)]
 y_train_01_subset = y_train[(y_train == 0) | (y_train == 1)]
 
