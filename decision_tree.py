@@ -27,8 +27,7 @@ class DecisionTree:
                                    filled=True,
                                    rounded=True,
                                    class_names=['Setosa',
-                                                'Versicolor',
-                                                'Virginica'],
+                                                'Versicolor'],
                                    feature_names=['petal length',
                                                   'petal width'],
                                    out_file=None)
