@@ -1,6 +1,6 @@
 from pydotplus import graph_from_dot_data
 from sklearn.tree import export_graphviz
-from load_data import LoadData
+from helper.load_data import LoadData
 from sklearn.tree import DecisionTreeClassifier
 
 

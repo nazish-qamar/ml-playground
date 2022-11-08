@@ -1,5 +1,5 @@
 from sklearn.ensemble import RandomForestClassifier
-from load_data import LoadData
+from helper.load_data import LoadData
 
 
 class RandomForest:

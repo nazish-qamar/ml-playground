@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from sklearn.ensemble import RandomForestClassifier
-from load_data import LoadData
+from helper.load_data import LoadData
 
 feat_labels, X_train, X_test, y_train, y_test = LoadData().load_data(standardize=True, dataName="wine")
 

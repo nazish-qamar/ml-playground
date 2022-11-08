@@ -1,5 +1,5 @@
 from sklearn.neighbors import KNeighborsClassifier
-from load_data import LoadData
+from helper.load_data import LoadData
 
 
 class KNN:

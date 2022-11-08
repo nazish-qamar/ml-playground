@@ -1,5 +1,5 @@
 import numpy as np
-from load_data import LoadData
+from helper.load_data import LoadData
 
 
 class LogisticRegressionWithGD:
