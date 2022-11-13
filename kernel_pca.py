@@ -1,7 +1,7 @@
-from scipy.spatial.distance import pdist, squareform
-from scipy.linalg import eigh
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.spatial.distance import pdist, squareform
+from scipy.linalg import eigh
 from sklearn.datasets import make_moons
 
 
