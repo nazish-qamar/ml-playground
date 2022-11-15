@@ -12,7 +12,7 @@ class LoadChessData:
 
     def load_chess_data(self):
         # Dataset available at https://www.kaggle.com/code/brnhurtado/starter-chess-game-dataset-lichess-b7c900fc-7/data?select=games.csv
-        df = pd.read_csv('datasets/games.csv', encoding='utf-8')
+        df = pd.read_csv('../datasets/games.csv', encoding='utf-8')
         # Difference between white rating and black rating - independent variable
         df['rating_difference'] = df['white_rating'] - df['black_rating']
 

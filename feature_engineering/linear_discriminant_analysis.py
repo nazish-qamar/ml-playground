@@ -73,8 +73,6 @@ eigen_pairs = [(np.abs(eigen_vals[i]), eigen_vecs[:, i]) for i in range(len(eige
 # Sort the eigenvalue and eigenvector from high to low
 eigen_pairs = sorted(eigen_pairs, key=lambda k: k[0], reverse=True)
 
-# Visually confirm that the list is correctly sorted by decreasing eigenvalues
-
 print('Eigenvalues in descending order:\n')
 for eigen_val in eigen_pairs:
     print(eigen_val[0])

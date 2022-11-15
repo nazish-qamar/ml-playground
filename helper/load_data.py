@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.datasets import load_iris
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
 
 
 class LoadData:
@@ -61,3 +62,14 @@ class LoadData:
                                                                 stratify=y)
 
             return df_wine.columns[1:], X_train, X_test, y_train, y_test
+
+        if self.dataName == "cancer":
+            df = pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases'
+                             '/breast-cancer-wisconsin/wdbc.data', header=None)
+            X = df.loc[:, 2:].values
+            y = df.loc[:, 1].values
+            y = LabelEncoder().fit_transform(y)
+            X_train, X_test, y_train, y_test = train_test_split(X, y,
+                                 test_size=0.20, stratify=y, random_state=1)
+
+            return X_train, X_test, y_train, y_test

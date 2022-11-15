@@ -37,6 +37,9 @@ class Rbf_Pca:
 
         # Collect the top k eigenvectors (projected examples)
         self.X_pc = np.column_stack([eigvecs[:, i] for i in range(self.n_components)])
+        # Collect the corresponding eigenvalues
+        lambdas = [eigvals[i] for i in range(self.n_components)]
+        return self.X_pc, lambdas
 
     def plot_pca(self):
         fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(7, 3))
@@ -65,6 +68,6 @@ class Rbf_Pca:
 X, y = make_moons(n_samples=100, random_state=123)
 rbf_obj = Rbf_Pca(X,y,gamma=15, n_components=2)
 rbf_obj.view_original_data()
-rbf_obj.rbf_kernel_pca()
+alphas, lambdas = rbf_obj.rbf_kernel_pca()
 rbf_obj.plot_pca()
 
