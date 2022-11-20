@@ -73,3 +73,13 @@ class LoadData:
                                  test_size=0.20, stratify=y, random_state=1)
 
             return X_train, X_test, y_train, y_test
+
+    def load_raw_data(self, dataName="wine"):
+        self.dataName = dataName
+
+        if self.dataName == "wine":
+            df_wine = pd.read_csv('https://archive.ics.uci.edu/ml/'
+                                  'machine-learning-databases/wine/wine.data',
+                                  header=None)
+
+            return df_wine
