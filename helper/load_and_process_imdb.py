@@ -21,6 +21,9 @@ class IMDbReview:
             with tarfile.open(self.target, 'r:gz') as tar:
                 tar.extractall(path="../datasets")
 
+        self.preprocess()
+        return self.df
+
     def preprocess(self):
         basepath = '../datasets/aclImdb'
         labels = {'pos': 1, 'neg': 0}
@@ -37,6 +40,4 @@ class IMDbReview:
         df.columns = ['review', 'sentiment']
         np.random.seed(0)
         self.df = df.reindex(np.random.permutation(df.index))
-
-
-IMDbReview().download()
+        self.df.to_csv('../datasets/movie_data.csv', index=False, encoding='utf-8')
