@@ -83,3 +83,15 @@ class LoadData:
                                   header=None)
 
             return df_wine
+
+        if self.dataName == "housing":
+            df_housing = pd.read_csv('https://archive.ics.uci.edu/ml/'
+                             'machine-learning-databases/housing/housing.data',
+                             header=None,
+                             sep='\s+')
+
+            df_housing.columns = ['CRIM', 'ZN', 'INDUS', 'CHAS',
+                          'NOX', 'RM', 'AGE', 'DIS', 'RAD',
+                          'TAX', 'PTRATIO', 'B', 'LSTAT', 'MEDV']
+
+            return df_housing
