@@ -1,10 +1,10 @@
-import numpy as np
+import pickle
+import os
 import re
+import numpy as np
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import HashingVectorizer
 from sklearn.linear_model import SGDClassifier
-from distutils.version import LooseVersion as Version
-from sklearn import __version__ as sklearn_version
 
 
 class OutOfCoreLearning:
@@ -61,9 +61,18 @@ class OutOfCoreLearning:
         X_test, y_test = self.get_minibatch(size=5000)
         X_test = self.vect.transform(X_test)
         print('Accuracy: %.3f' % self.clf.score(X_test, y_test))
-        clf = self.clf.partial_fit(X_test, y_test)
+        self.clf = self.clf.partial_fit(X_test, y_test)
+
+    def create_pickle_objects(self):
+        dest = 'pkl_objects'
+        if not os.path.exists(dest):
+            os.makedirs(dest)
+
+        pickle.dump(self.stop, open(os.path.join(dest, 'stopwords.pkl'), 'wb'), protocol=4)
+        pickle.dump(self.clf, open(os.path.join(dest, 'classifier.pkl'), 'wb'), protocol=4)
 
 
 model_ = OutOfCoreLearning()
 model_.training(path_="../datasets/movie_data.csv")
 model_.compute_accuracy()
+model_.create_pickle_objects()
