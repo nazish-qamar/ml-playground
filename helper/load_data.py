@@ -4,6 +4,7 @@ from sklearn.datasets import load_iris
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
+from sklearn.datasets import fetch_california_housing
 
 
 class LoadData:
@@ -95,3 +96,24 @@ class LoadData:
                           'TAX', 'PTRATIO', 'B', 'LSTAT', 'MEDV']
 
             return df_housing
+
+    def load_california_housing_data(self):
+        dataset = fetch_california_housing()
+        X_full, y_full = dataset.data, dataset.target
+        feature_names = dataset.feature_names
+        feature_mapping = {
+            "MedInc": "Median income in block",
+            "HousAge": "Median house age in block",
+            "AveRooms": "Average number of rooms",
+            "AveBedrms": "Average number of bedrooms",
+            "Population": "Block population",
+            "AveOccup": "Average house occupancy",
+            "Latitude": "House block latitude",
+            "Longitude": "House block longitude",
+        }
+        features = ["MedInc", "Latitude", "Longitude"]
+        features_idx = [feature_names.index(feature) for feature in features]
+        X = X_full[:, features_idx]
+        df_X = pd.DataFrame({'MedInc': X[:, 0], 'Latitude': X[:, 1], 'Longitude': X[:, 2]})
+        return df_X
+
