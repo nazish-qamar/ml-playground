@@ -8,7 +8,7 @@ class KMeansClustering:
     def __init__(self):
         self.y_km = None
         self.km = KMeans(n_clusters=2,
-                         init='random',
+                         init='random', # use init = 'k-means++' for kmeans++ clustering (by default init is k-means++)
                          n_init=10,
                          max_iter=300,
                          tol=1e-04,
