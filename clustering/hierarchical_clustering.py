@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn.cluster import AgglomerativeClustering
 
+
 class HierarchicalClustering:
     def __init__(self):
         self.X = None
