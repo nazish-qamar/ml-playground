@@ -53,6 +53,6 @@ class LoadMnist:
         return X_train, y_train, X_test, y_test
 
 
-model_ = LoadMnist()
-X_train, X_test, y_train, y_test = model_.load_train_test()
-model_.save_compressed_data()
+#model_ = LoadMnist()
+#X_train, X_test, y_train, y_test = model_.load_train_test()
+#model_.save_compressed_data()

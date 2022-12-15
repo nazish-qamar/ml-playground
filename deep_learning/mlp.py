@@ -159,9 +159,7 @@ class NeuralNetMLP(object):
 
 
 X_train, X_test, y_train, y_test = LoadMnist().load_train_test()
-
 n_epochs = 100
-
 
 nn = NeuralNetMLP(n_hidden=100,
                   l2=0.01,
@@ -176,8 +174,24 @@ nn.fit(X_train=X_train[:55000],
        X_valid=X_train[55000:],
        y_valid=y_train[55000:])
 
+y_test_pred = nn.predict(X_test)
+acc = (np.sum(y_test == y_test_pred)
+       .astype(np.float) / X_test.shape[0])
 
+print('Test accuracy: %.2f%%' % (acc * 100))
+
+#Cost vs number of epochs
 plt.plot(range(nn.epochs), nn.eval_['cost'])
 plt.ylabel('Cost')
 plt.xlabel('Epochs')
+plt.show()
+
+#Training and validation accuracy vs number of epochs
+plt.plot(range(nn.epochs), nn.eval_['train_acc'],
+         label='Training')
+plt.plot(range(nn.epochs), nn.eval_['valid_acc'],
+         label='Validation', linestyle='--')
+plt.ylabel('Accuracy')
+plt.xlabel('Epochs')
+plt.legend(loc='lower right')
 plt.show()
