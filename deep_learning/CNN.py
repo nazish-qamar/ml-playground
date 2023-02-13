@@ -59,6 +59,9 @@ class CNN(tf.keras.Sequential):
     def add_drop_out(self):
         self.add(tf.keras.layers.Dropout(rate=0.5))
 
+    def add_global_average_pooling_2D(self):
+        self.add(tf.keras.layers.GlobalAveragePooling2D())
+
 
 # Loading and processing data
 mnist_train_orig, mnist_test_orig = load_mnist()
